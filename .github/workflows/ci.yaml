@@ -17,7 +17,6 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
       - run: pnpm install --ignore-scripts
-      - run: pnpm run build
       - run: pnpm run lint
       - run: pnpm run --if-present test
       - uses: google-github-actions/release-please-action@v3
