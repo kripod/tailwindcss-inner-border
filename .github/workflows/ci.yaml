@@ -20,6 +20,7 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run --if-present test
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: node
           package-name: tailwindcss-inner-border
