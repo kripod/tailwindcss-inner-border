@@ -23,7 +23,7 @@ jobs:
         with:
           release-type: node
           package-name: tailwindcss-inner-border
-      - if: github.ref_type == 'tag'
+      - if: ${{ steps.release.outputs.release_created }}
         run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
