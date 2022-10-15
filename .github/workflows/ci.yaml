@@ -1,0 +1,30 @@
+name: CI
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --ignore-scripts
+      - run: pnpm run build
+      - run: pnpm run lint
+      - run: pnpm run --if-present test
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: tailwindcss-inner-border
+      - if: github.ref_type == 'tag'
+        run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

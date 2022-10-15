@@ -1,0 +1,49 @@
+{
+  "name": "tailwindcss-inner-border",
+  "version": "0.1.0",
+  "description": "A Tailwind CSS plugin that provides utilities for creating inner borders with box-shadow.",
+  "keywords": [
+    "tailwind",
+    "plugin",
+    "border",
+    "box-shadow",
+    "inset",
+    "inside"
+  ],
+  "homepage": "https://github.com/kripod/tailwindcss-inner-border#readme",
+  "bugs": "https://github.com/kripod/tailwindcss-inner-border/issues",
+  "repository": "github:kripod/tailwindcss-inner-border",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/kripod"
+  },
+  "license": "MIT",
+  "author": "Kristóf Poduszló <kripod@protonmail.com>",
+  "exports": {
+    "require": "./src/index.js"
+  },
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "fix": "prettier --write .",
+    "lint": "prettier --check .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.65",
+    "husky": "8.0.1",
+    "nano-staged": "0.8.0",
+    "prettier": "2.7.1",
+    "tailwindcss": "3.1.8"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3"
+  },
+  "packageManager": "pnpm@7.13.4",
+  "nano-staged": {
+    "*": "prettier --write --ignore-unknown"
+  }
+}
