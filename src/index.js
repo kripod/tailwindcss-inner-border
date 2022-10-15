@@ -17,10 +17,10 @@ const innerBorderPlugin = plugin(({ addDefaults, matchUtilities, theme }) => {
         "--tw-inner-border-shadow":
           "inset 0 0 0 var(--tw-inner-border-width) var(--tw-inner-border-color)",
         "box-shadow": [
-          `var(--tw-ring-offset-shadow, 0 0 #0000)`,
-          `var(--tw-ring-shadow, 0 0 #0000)`,
-          `var(--tw-inner-border-shadow)`,
-          `var(--tw-shadow, 0 0 #0000)`,
+          "var(--tw-ring-offset-shadow, 0 0 #0000)",
+          "var(--tw-ring-shadow, 0 0 #0000)",
+          "var(--tw-inner-border-shadow)",
+          "var(--tw-shadow, 0 0 #0000)",
         ].join(", "),
       }),
     },
