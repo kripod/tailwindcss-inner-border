@@ -24,6 +24,8 @@ jobs:
         with:
           release-type: node
           package-name: tailwindcss-inner-border
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
       - if: ${{ steps.release.outputs.release_created }}
         run: pnpm publish
         env:
