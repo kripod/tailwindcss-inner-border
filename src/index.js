@@ -32,6 +32,23 @@ const innerBorderPlugin = plugin(
         values: theme("borderWidth"),
       },
     );
+    const directions = ["top", "bottom", "left", "right"];
+    directions.forEach((direction) => {
+      matchUtilities(
+        {
+          [`inner-border-${direction}`]: (value) => ({
+            "--tw-inner-border-color": theme("borderColor.DEFAULT", "currentColor"),
+            "--tw-inner-border-width": value,
+            "--tw-inner-border-shadow": getInnerBorderShadow(direction),
+            "box-shadow": defaultBoxShadow,
+          }),
+        },
+        {
+          type: ["line-width", "length"],
+          values: theme("borderWidth"),
+        }
+      );
+    });
     matchUtilities(
       {
         "inner-border": (value) => ({
@@ -58,6 +75,17 @@ const innerBorderPlugin = plugin(
         { ring: () => ({ "box-shadow": defaultBoxShadow }) },
         { values: theme("ringWidth"), type: "length" },
       );
+    }
+
+    // Helper function to generate inner border shadow based on direction
+    function getInnerBorderShadow(direction) {
+      const shadows = {
+        top: "inset 0 var(--tw-inner-border-width) 0 var(--tw-inner-border-color)",
+        bottom: "inset 0 calc(-1 * var(--tw-inner-border-width)) 0 var(--tw-inner-border-color)",
+        left: "inset var(--tw-inner-border-width) 0 0 var(--tw-inner-border-color)",
+        right: "inset calc(-1 * var(--tw-inner-border-width)) 0 0 var(--tw-inner-border-color)",
+      };
+      return shadows[direction] || shadows["bottom"]; // Default to bottom
     }
   },
 );
